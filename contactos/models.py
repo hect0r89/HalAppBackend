@@ -10,6 +10,6 @@ class Contacto(models.Model):
     last_name = models.CharField(blank=True, null=True, max_length=50)
     email = models.EmailField(max_length=50, blank=True, null=True)
     address = models.CharField(max_length=150, blank=True, null=True)
-    phone = models.ManyToManyField(Telefono, blank=False, null=False)
+    phone = models.ManyToManyField(Telefono, blank=False)
 
 
