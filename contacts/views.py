@@ -1,17 +1,12 @@
 from rest_framework import viewsets
 
-from contacts.models import Contact, Email, Phone
-from contacts.serializers import ContactSerializer, EmailSerializer, PhoneSerializer
+from contacts.models import Contact, Phone
+from contacts.serializers import ContactSerializer, PhoneSerializer
 
 
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
-
-
-class EmailViewSet(viewsets.ModelViewSet):
-    queryset = Email.objects.all()
-    serializer_class = EmailSerializer
 
 
 class PhoneViewSet(viewsets.ModelViewSet):

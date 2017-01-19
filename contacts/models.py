@@ -3,18 +3,17 @@ from django.db import models
 # Create your models here.
 
 
-class Contact(models.Model):
-    first_name = models.CharField(blank=False, null=False, max_length=50)
-    last_name = models.CharField(blank=True, null=True, max_length=50)
-
-
 class Phone(models.Model):
-    number = models.CharField(blank=False, null=False, max_length=13)
-    type = models.IntegerField(blank=False, null=False)
-    contact = models.ForeignKey(Contact, verbose_name="Contact", blank=False, null=False, related_name='phones')
+    numero = models.CharField(blank=False, null=False, max_length=13)
+    tipo = models.IntegerField(blank=False, null=False)
 
 
-class Email(models.Model):
-    address = models.EmailField(blank=False, null=False)
-    type = models.IntegerField(blank=False, null=False)
-    contact = models.ForeignKey(Contact, verbose_name="Contact", blank=False, null=False, related_name='emails')
+class Contact(models.Model):
+    nombre = models.CharField(blank=False, null=False, max_length=50)
+    apellidos = models.CharField(blank=True, null=True, max_length=50)
+    direccion = models.CharField(blank=True, null=True, max_length=50)
+    correo = models.EmailField(blank=True, null=True, max_length=50)
+    telefono = models.ForeignKey(Phone, verbose_name="Telefono", null=True, blank=True)
+    color = models.IntegerField(blank=False, null=False)
+
+
