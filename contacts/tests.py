@@ -5,6 +5,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 from contacts.models import Contact, Phone
+from contacts.serializers import PhoneSerializer
 
 URL = '/api/1.0/contacts/'
 URL_PHONE = '/api/1.0/phones/'
@@ -24,7 +25,7 @@ class HalAppTest(APITestCase):
         self.assertEqual(len(response.data), 2)
 
     def test_create_contact_with_phone(self):
-        response = self.client.post(URL, data={'telefono': "sd",'nombre': "Cotacto 3",'apellidos': 'Contacto 3', 'direccion': 'address3', 'email': 'email3@user.com',  'color':1})
+        response = self.client.post(URL, data={'telefono': PhoneSerializer(self.phonec1).data,'nombre': "Cotacto 3",'apellidos': 'Contacto 3', 'direccion': 'address3', 'email': 'email3@user.com',  'color':1}, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_create_phone(self):
